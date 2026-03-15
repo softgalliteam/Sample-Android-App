@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyExpApp</string>
+    <string name="save_data">Save Data</string>
+    <string name="fetch_data">Fetch Data</string>
+    <string name="enter_text_to_save">Enter Text To Save</string>
+    <string name="parth_amp_pari"><![CDATA[Parth & Pari]]></string>
+</resources>

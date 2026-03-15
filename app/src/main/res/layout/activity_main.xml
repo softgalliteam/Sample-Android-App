@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context="com.learning.exp.MainActivity">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/dataEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_text_to_save"
+        android:text="@string/parth_amp_pari" />
+
+    <Button
+        android:id="@+id/saveDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_data" />
+
+    <Button
+        android:id="@+id/fetchDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_data" />
+
+    <TextView
+        android:id="@+id/resultTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
