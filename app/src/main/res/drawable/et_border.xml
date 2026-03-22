@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Optional: set background color to transparent to only show the border -->
+    <solid android:color="@android:color/transparent"/>
+
+    <!-- Define the border (outline) using the stroke tag -->
+    <stroke
+        android:width="2dp"
+        android:color="#0E19B3"/>
+
+    <!-- Optional: add rounded corners -->
+    <corners android:radius="8dp"/>
+</shape>
