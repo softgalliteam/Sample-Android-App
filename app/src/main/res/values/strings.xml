@@ -6,4 +6,7 @@
     <string name="parth_amp_pari"><![CDATA[Parth & Pari]]></string>
     <string name="apple">Apple</string>
     <string name="banana">Banana</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
