@@ -1,5 +1,6 @@
 package com.learning.exp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.learning.exp.databinding.LoginActivityBinding
@@ -12,6 +13,9 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(mBinding.root)
 
+        mBinding.loginBtn.setOnClickListener {
+            startActivity(Intent(this, ListActivity::class.java))
+        }
     }
 
 }
