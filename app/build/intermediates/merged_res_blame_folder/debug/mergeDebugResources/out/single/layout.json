@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.learning.exp.app-mergeDebugResources-30:/layout/login_activity.xml",
+        "source": "com.learning.exp.app-main-33:/layout/login_activity.xml"
+    },
+    {
+        "merged": "com.learning.exp.app-mergeDebugResources-30:/layout/activity_main.xml",
+        "source": "com.learning.exp.app-main-33:/layout/activity_main.xml"
+    }
+]

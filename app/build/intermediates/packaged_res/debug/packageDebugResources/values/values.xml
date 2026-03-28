@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple">#673AB7</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FAB400</color>
+    <string name="app_name">Anaya Fashion</string>
+    <string name="apple">Apple</string>
+    <string name="banana">Banana</string>
+    <string name="email">Email</string>
+    <string name="enter_text_to_save">Enter Text To Save</string>
+    <string name="fetch_data">Fetch Data</string>
+    <string name="login">Login</string>
+    <string name="parth_amp_pari"><![CDATA[Parth & Pari]]></string>
+    <string name="password">Password</string>
+    <string name="save_data">Save Data</string>
+    <style name="Base.Theme.WebViewCacheExample" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.WebViewCacheExample" parent="Base.Theme.WebViewCacheExample"/>
+</resources>
