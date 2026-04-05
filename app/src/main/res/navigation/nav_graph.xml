@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/callFragment"
-        android:name="com.learning.exp.fragments.CallFragment"
+        android:name="com.learning.exp.fragments.SharedPrefFragment"
         tools:layout="@layout/call_fragment">
 
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.learning.exp.fragments.ChatFragment"
+        android:name="com.learning.exp.fragments.RoomDbFragment"
         tools:layout="@layout/chat_fragment">
 
         <action
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/statusFragment"
-        android:name="com.learning.exp.fragments.StatusFragment"
+        android:name="com.learning.exp.fragments.FileStorageFragment"
         tools:layout="@layout/status_fragment">
 
         <action

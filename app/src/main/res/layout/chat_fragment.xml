@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    android:gravity="center">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/buttonsLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/addUserBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/green"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Add User" />
+
+        <TextView
+            android:id="@+id/getUsersBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/yellow"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Get Users" />
+
+        <TextView
+            android:id="@+id/deleteUserBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/et_border"
+            android:backgroundTint="@color/red"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Delete User" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/callFragmentTextView"

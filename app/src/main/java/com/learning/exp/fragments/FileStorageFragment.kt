@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.learning.exp.R
 
-class ChatFragment : Fragment() {
+class FileStorageFragment  : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.chat_fragment, container, false)
+        return inflater.inflate(R.layout.status_fragment, container, false)
     }
-
 }

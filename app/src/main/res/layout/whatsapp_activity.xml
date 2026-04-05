@@ -23,7 +23,7 @@
             android:backgroundTint="@color/green"
             android:gravity="center"
             android:padding="6dp"
-            android:text="Call" />
+            android:text="Shared Pref" />
 
         <TextView
             android:id="@+id/chatBtn"
@@ -35,7 +35,7 @@
             android:backgroundTint="@color/yellow"
             android:gravity="center"
             android:padding="6dp"
-            android:text="Chat" />
+            android:text="Room DB" />
 
         <TextView
             android:id="@+id/statusBtn"
@@ -46,7 +46,7 @@
             android:backgroundTint="@color/red"
             android:gravity="center"
             android:padding="6dp"
-            android:text="Status" />
+            android:text="File Storage" />
 
     </LinearLayout>
     <!--First Way using nav_graph-->
