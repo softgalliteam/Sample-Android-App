@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
         mBinding.recyclerViewBtn.setOnClickListener {
             startActivity("Recycler View")
         }
-        mBinding.gridViewBtn.setOnClickListener {
-            startActivity("Grid View")
+        mBinding.whatsappBtn.setOnClickListener {
+            startActivity("What's App")
         }
 
     }
@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                     .putExtra("EXTRA_DATA", "Hello from MainActivity")
                     .putExtra("EXTRA_NUMBER", 123)
             )
-            //"Grid View" -> startActivity(GridViewActivity.newIntent(this))
+
+            "What's App" -> startActivity(Intent(this, WhatsAppActivity::class.java))
         }
     }
 }

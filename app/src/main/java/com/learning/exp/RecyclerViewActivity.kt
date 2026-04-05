@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.learning.exp.DataProviderUtils.getFruitList
 import com.learning.exp.databinding.RecyclerviewActivityBinding
@@ -16,6 +17,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         mBinding = RecyclerviewActivityBinding.inflate(layoutInflater)
 
         setContentView(mBinding.root)
+        setContentView(R.layout.recyclerview_activity)
 
         val dataFromMainActivity = intent.getStringExtra("EXTRA_DATA")
         val numberFromMainActivity = intent.getIntExtra("EXTRA_NUMBER", 0)
@@ -25,7 +27,8 @@ class RecyclerViewActivity : AppCompatActivity() {
 
 
         // getting the recyclerview by its id
-        val recyclerview = mBinding.recyclerView
+        //val recyclerview = mBinding.recyclerView
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerView)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)

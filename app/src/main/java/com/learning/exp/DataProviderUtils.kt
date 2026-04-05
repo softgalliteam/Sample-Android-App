@@ -1,6 +1,12 @@
 package com.learning.exp
 
 object DataProviderUtils {
+
+    fun checkInternetConnection(): Boolean {
+        // Simulating internet connection check
+        return true
+    }
+
     fun getFruitList(): List<FruitListItem> {
         //Custom ListView using CustomAdapter
         val list = ArrayList<FruitListItem>()

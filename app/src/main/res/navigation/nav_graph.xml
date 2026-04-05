@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/callFragment">
+
+    <fragment
+        android:id="@+id/callFragment"
+        android:name="com.learning.exp.fragments.CallFragment"
+        tools:layout="@layout/call_fragment">
+
+        <action
+            android:id="@+id/action_call_to_status"
+            app:destination="@id/statusFragment" />
+
+        <action
+            android:id="@+id/action_call_to_chat"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.learning.exp.fragments.ChatFragment"
+        tools:layout="@layout/chat_fragment">
+
+        <action
+            android:id="@+id/action_chat_to_call"
+            app:destination="@id/callFragment" />
+
+        <action
+            android:id="@+id/action_chat_to_status"
+            app:destination="@id/statusFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statusFragment"
+        android:name="com.learning.exp.fragments.StatusFragment"
+        tools:layout="@layout/status_fragment">
+
+        <action
+            android:id="@+id/action_status_to_call"
+            app:destination="@id/callFragment" />
+
+        <action
+            android:id="@+id/action_status_to_chat"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+</navigation>

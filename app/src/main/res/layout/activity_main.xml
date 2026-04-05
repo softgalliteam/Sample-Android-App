@@ -44,11 +44,11 @@
                 android:text="RecyclerView Button" />
 
             <Button
-                android:id="@+id/gridViewBtn"
+                android:id="@+id/whatsappBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="GridView Button" />
+                android:text="Whatsapp Fragnment Example" />
 
             <ImageView
                 android:layout_width="75dp"
