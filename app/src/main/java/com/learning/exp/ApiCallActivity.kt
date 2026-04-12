@@ -5,9 +5,9 @@ import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.learning.exp.databinding.ApiCallActivityBinding
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl
@@ -30,10 +30,12 @@ class ApiCallActivity : AppCompatActivity() {
 
         setContentView(mBinding.root)
 
+        val computerRV = mBinding.computerRV
         val userNameEt = mBinding.nameEt
         val cpu = mBinding.cpuEt
         val resultTv = mBinding.resultTv
 
+        computerRV.layoutManager = LinearLayoutManager(this)
 
         mBinding.addBtn.setOnClickListener {
             lifecycleScope.launch(IO) {
@@ -100,6 +102,7 @@ class ApiCallActivity : AppCompatActivity() {
             }
         }
         var myResponse = ""
+        var computerList = ArrayList<ResponseDataItem>()
         mBinding.getBtn.setOnClickListener {
             Log.d(TAG, "Fetching Details from Rest API.....")
             lifecycleScope.launch(IO) {
@@ -110,12 +113,22 @@ class ApiCallActivity : AppCompatActivity() {
                 client.newCall(request).execute().use { response ->
                     myResponse = response.body?.string().toString()
                     Log.d(TAG, myResponse)
+
+                    Log.d(TAG, "Parsing response using Gson.....")
+                 val  temp: ResponseData = Gson().fromJson(myResponse, ResponseData::class.java)
+                    computerList = temp
+                    Log.d(TAG, computerList.toString())
                 }
             }
 
             Handler().postDelayed({
-                resultTv.text = myResponse
-            }, 1000)
+                Log.d(TAG, "Updating UI with the fetched data.....")
+                // Set in recycler view adapter
+                val adapter = ComputerRecyclerViewAdapter(computerList, {})
+
+                // Setting the Adapter with the recyclerview
+                computerRV.adapter = adapter
+            }, 5000)
         }
         mBinding.deleteBtn.setOnClickListener {
             Log.d(TAG, "Deleting Details from Rest API.....")
