@@ -5,13 +5,16 @@ import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
 import com.learning.exp.databinding.ApiCallActivityBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class ApiCallActivity : AppCompatActivity() {
     companion object {
@@ -28,19 +31,32 @@ class ApiCallActivity : AppCompatActivity() {
         setContentView(mBinding.root)
 
         val userNameEt = mBinding.nameEt
-        val userEmailEt = mBinding.emailEt
+        val cpu = mBinding.cpuEt
         val resultTv = mBinding.resultTv
 
 
         mBinding.addBtn.setOnClickListener {
             lifecycleScope.launch(IO) {
                 val name = userNameEt.text.toString()
-                val email = userEmailEt.text.toString()
+                val cpu = cpu.text.toString()
 
+                val requestBody = RequestBody(
+                    name = name,
+                    data = ComputerDetails(
+                        cpuModel = cpu,
+                        hardDiskSize = "2 TB",
+                        year = 2026,
+                        price = 25000.0
+                    )
+                )
+
+                val requestBodyJson: String = Gson().toJson(requestBody)
+                val body = requestBodyJson.toRequestBody("application/json".toMediaType())
                 // Make API call to add user using name and email
                 val client = OkHttpClient()
                 val request = Request.Builder()
-                    .addHeader("Content-Type", "application/json")
+                    //.addHeader("Content-Type", "application/json")
+                    .post(body)
                     .url(BASE_URL).build()
                 client.newCall(request).execute().use { response ->
                     Log.d(TAG, response.body?.string().toString())
@@ -48,14 +64,48 @@ class ApiCallActivity : AppCompatActivity() {
             }
         }
         mBinding.updateBtn.setOnClickListener {
+            lifecycleScope.launch(IO) {
+                val name = userNameEt.text.toString()
+                val cpu = cpu.text.toString()
 
+                val requestBody = RequestBody(
+                    name = name,
+                    data = ComputerDetails(
+                        cpuModel = cpu,
+                        hardDiskSize = "2 TB",
+                        year = 2026,
+                        price = 25000.0
+                    )
+                )
+
+                val requestBodyJson: String = Gson().toJson(requestBody)
+                val body = requestBodyJson.toRequestBody("application/json".toMediaType())
+
+                val client = OkHttpClient()
+                val url = HttpUrl.Builder()
+                    .scheme("https")
+                    .host("api.restful-api.dev")
+                    .addPathSegment("objects")
+                    .addPathSegment("ff8081819d62221a019d80168a5b248d")
+                    .build()
+
+                val request = Request.Builder()
+                    .url(url)
+                    .addHeader("Content-Type", "application/json")
+                    .put(body)
+                    .build()
+                client.newCall(request).execute().use { response ->
+                    Log.d(TAG, response.body?.string().toString())
+                }
+            }
         }
         var myResponse = ""
         mBinding.getBtn.setOnClickListener {
             Log.d(TAG, "Fetching Details from Rest API.....")
             lifecycleScope.launch(IO) {
                 // Make API call to add user using name and email
-                val client = OkHttpClient() // Or use Retrofit <Imp> or any other HTTP client library
+                val client =
+                    OkHttpClient() // Or use Retrofit <Imp> or any other HTTP client library
                 val request = Request.Builder().url(BASE_URL).build()
                 client.newCall(request).execute().use { response ->
                     myResponse = response.body?.string().toString()
@@ -85,3 +135,4 @@ class ApiCallActivity : AppCompatActivity() {
         }
     }
 }
+// Generate request body using name and email

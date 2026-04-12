@@ -7,7 +7,7 @@ data class RequestBody(
 
 data class ComputerDetails(
     val cpuModel: String,
-    val hardDisk: String,
+    val hardDiskSize: String,
     val price: Double,
     val year: Int
 )

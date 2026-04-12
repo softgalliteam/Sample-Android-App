@@ -44,13 +44,13 @@
         android:id="@+id/nameEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Your Emp Name" />
+        android:hint="Enter Computer Name" />
 
     <EditText
-        android:id="@+id/emailEt"
+        android:id="@+id/cpuEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Your Emp Email" />
+        android:hint="Enter CPU Details" />
 
     <LinearLayout
         android:layout_width="match_parent"

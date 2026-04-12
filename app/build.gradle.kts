@@ -64,4 +64,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     // Optional: Add logging interceptor for debugging
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    implementation("com.google.code.gson:gson:2.13.2") // Check for the latest version
+
 }
