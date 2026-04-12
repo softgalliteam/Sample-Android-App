@@ -50,6 +50,13 @@
                 android:layout_marginTop="16dp"
                 android:text="Whatsapp Fragnment Example" />
 
+            <Button
+                android:id="@+id/apiCallBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="API Call Example" />
+
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"

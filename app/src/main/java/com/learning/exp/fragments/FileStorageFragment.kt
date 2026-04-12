@@ -16,4 +16,11 @@ class FileStorageFragment  : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.status_fragment, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // File storage related code can be added here in the future
+
+    }
 }

@@ -21,9 +21,11 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.Update
 import com.learning.exp.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class RoomDbFragment : Fragment() {
 
@@ -44,6 +46,9 @@ class RoomDbFragment : Fragment() {
         val addUserTv = view.findViewById<android.widget.TextView>(R.id.addUserBtn)
         val getUsersTv = view.findViewById<android.widget.TextView>(R.id.getUsersBtn)
         val deleteTv = view.findViewById<android.widget.TextView>(R.id.deleteUserBtn)
+        val updateBtn = view.findViewById<android.widget.TextView>(R.id.updateUserBtn)
+        val empNameEt = view.findViewById<android.widget.EditText>(R.id.empNameEt)
+        val empEmailEt = view.findViewById<android.widget.EditText>(R.id.empEmailEt)
         // Room Database related code can be added here in the future
 
         // @Entity : It is used to annotate a data class that represents a table in the database.
@@ -56,23 +61,17 @@ class RoomDbFragment : Fragment() {
         val userDao = db.userDao()
 
 
-        //Adding user into the data base
-        val userManish = User(
-            id = 1,
-            name = "Manish Kumar",
-            userEmail = "Manish@gmail.com"
-        )
-        val userRahul = User(
-            id = 2,
-            name = "Rahul Kumar",
-            userEmail = "Manish@gmail.com"
-        )
+
 
         addUserTv.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 // Insert users into the database
-                userDao.addUser(userManish)
-                userDao.addUser(userRahul)
+                val newEmp = User(
+                    Random.nextInt(1, 1000),//Generated random ID for the user
+                    empNameEt.text.toString(), //Getting the user name from the EditText
+                    empEmailEt.text.toString() //Getting the user email from the EditText
+                )
+                userDao.addUser(newEmp)
 
             }
 
@@ -103,14 +102,18 @@ class RoomDbFragment : Fragment() {
         deleteTv.setOnClickListener {
             //Deleting user from the database
             lifecycleScope.launch(Dispatchers.IO) {
-                userDao.deleteUser(userManish)
-
+               userDao.deleteUser(usersList[0]) // Deleting the first user in the list for demonstration purposes
             }
             Toast.makeText(
                 requireActivity(),
                 "User deleted from the database",
                 Toast.LENGTH_SHORT
             ).show()
+        }
+        updateBtn.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO) {
+                userDao.updateUser(usersList[0].copy(name = "Manish Rathore", userEmail = "manish@gmail.com"))
+            }
         }
     }
 
@@ -130,6 +133,10 @@ class RoomDbFragment : Fragment() {
 
         @Query("SELECT * FROM users")
         fun getAllUsers(): List<User>
+
+
+        @Update
+        suspend fun updateUser(user: User)
 
         @Delete
         suspend fun deleteUser(user: User)

@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         mBinding.whatsappBtn.setOnClickListener {
             startActivity("What's App")
         }
+        mBinding.apiCallBtn.setOnClickListener {
+            startActivity("API Call")
+        }
 
     }
 
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             )
 
             "What's App" -> startActivity(Intent(this, WhatsAppActivity::class.java))
+            "API Call" -> startActivity(Intent(this, ApiCallActivity::class.java))
         }
     }
 }

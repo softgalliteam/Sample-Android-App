@@ -25,6 +25,7 @@
         <activity android:name=".ListActivity"/>
         <activity android:name=".RecyclerViewActivity"/>
         <activity android:name=".WhatsAppActivity"/>
+        <activity android:name=".ApiCallActivity"/>
     </application>
 
 </manifest>
