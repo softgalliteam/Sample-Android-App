@@ -3,13 +3,17 @@ package com.learning.exp
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.learning.exp.databinding.ApiCallActivityBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -36,6 +40,12 @@ class ApiCallActivity : AppCompatActivity() {
         val resultTv = mBinding.resultTv
 
         computerRV.layoutManager = LinearLayoutManager(this)
+        // Set in recycler view adapter
+        val adapter = ComputerRecyclerViewAdapter(arrayListOf(), {
+            Toast.makeText(this, "Clicked: $it", Toast.LENGTH_SHORT).show()
+        })
+        // Setting the Adapter with the recyclerview
+        computerRV.adapter = adapter
 
         mBinding.addBtn.setOnClickListener {
             lifecycleScope.launch(IO) {
@@ -102,7 +112,6 @@ class ApiCallActivity : AppCompatActivity() {
             }
         }
         var myResponse = ""
-        var computerList = ArrayList<ResponseDataItem>()
         mBinding.getBtn.setOnClickListener {
             Log.d(TAG, "Fetching Details from Rest API.....")
             lifecycleScope.launch(IO) {
@@ -115,20 +124,14 @@ class ApiCallActivity : AppCompatActivity() {
                     Log.d(TAG, myResponse)
 
                     Log.d(TAG, "Parsing response using Gson.....")
-                 val  temp: ResponseData = Gson().fromJson(myResponse, ResponseData::class.java)
-                    computerList = temp
+                    val computerList: ResponseData =
+                        Gson().fromJson(myResponse, ResponseData::class.java)
                     Log.d(TAG, computerList.toString())
+                    withContext(Main) {
+                        adapter.updateData(computerList)
+                    }
                 }
             }
-
-            Handler().postDelayed({
-                Log.d(TAG, "Updating UI with the fetched data.....")
-                // Set in recycler view adapter
-                val adapter = ComputerRecyclerViewAdapter(computerList, {})
-
-                // Setting the Adapter with the recyclerview
-                computerRV.adapter = adapter
-            }, 5000)
         }
         mBinding.deleteBtn.setOnClickListener {
             Log.d(TAG, "Deleting Details from Rest API.....")
@@ -148,4 +151,3 @@ class ApiCallActivity : AppCompatActivity() {
         }
     }
 }
-// Generate request body using name and email

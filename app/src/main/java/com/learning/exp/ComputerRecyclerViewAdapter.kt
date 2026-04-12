@@ -1,5 +1,6 @@
 package com.learning.exp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ComputerRecyclerViewAdapter(
-    private val list: List<ResponseDataItem>,
+    private val list: ArrayList<ResponseDataItem>,
     private val onClickListener: (String) -> Unit
 ) :
     RecyclerView.Adapter<ComputerRecyclerViewAdapter.ViewHolder>() {
@@ -24,15 +25,16 @@ class ComputerRecyclerViewAdapter(
     }
 
     // binds the list items to a view
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val computer = list[position]
 
         holder.compNameTextView?.text = computer.name
-        holder.compDesTextView?.text = "CPU: ${computer.data.cpuModel}, RAM: ${computer.data.hardDiskSize}, Price: ${computer.data.price}, Year: ${computer.data.year}"
+        holder.compDesTextView?.text = "CPU: ${computer.data?.cpuModel}, RAM: ${computer.data?.hardDiskSize}, Price: ${computer.data?.price}, Year: ${computer.data?.year}"
 
         holder.itemView.setOnClickListener {
-            onClickListener(computer.name)
+            onClickListener(computer.name.toString())
         }
 
     }
@@ -47,5 +49,12 @@ class ComputerRecyclerViewAdapter(
         val compIamge = itemView.findViewById<ImageView>(R.id.compLogoIv)
         val compNameTextView = itemView.findViewById<TextView>(R.id.compTitleTv)
         val compDesTextView = itemView.findViewById<TextView>(R.id.compDescTv)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newList: List<ResponseDataItem>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
     }
 }
