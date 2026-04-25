@@ -1,3 +1,3 @@
-package com.learning.exp
+package com.learning.exp.model.dataclasses
 
 class ResponseData : ArrayList<ResponseDataItem>()

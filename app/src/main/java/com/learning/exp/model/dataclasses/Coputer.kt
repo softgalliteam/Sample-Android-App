@@ -1,4 +1,4 @@
-package com.learning.exp
+package com.learning.exp.model.dataclasses
 
 data class Coputer(
     val cpuModel: String?,

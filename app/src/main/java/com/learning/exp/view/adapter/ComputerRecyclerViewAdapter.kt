@@ -1,4 +1,4 @@
-package com.learning.exp
+package com.learning.exp.view.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.learning.exp.R
+import com.learning.exp.model.dataclasses.ResponseDataItem
 
 class ComputerRecyclerViewAdapter(
     private val list: ArrayList<ResponseDataItem>,
