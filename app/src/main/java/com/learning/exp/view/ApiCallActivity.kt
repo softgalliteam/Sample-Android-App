@@ -41,12 +41,14 @@ class ApiCallActivity : AppCompatActivity() {
                 is ApiCallState.Loading -> {
                     // Show loading indicator
                     mBinding.loaderLl.visibility = android.view.View.VISIBLE
+                    mBinding.errorTv.visibility = android.view.View.INVISIBLE
                     Snackbar.make(mBinding.root, "Loading...", Snackbar.LENGTH_LONG).show()
                 }
 
                 is ApiCallState.Success -> {
 
                     mBinding.loaderLl.visibility = android.view.View.INVISIBLE
+                    mBinding.errorTv.visibility = android.view.View.INVISIBLE
                     // Update UI with the list of computers
                     val computerList = state.articles
 
@@ -59,6 +61,7 @@ class ApiCallActivity : AppCompatActivity() {
 
                 is ApiCallState.Error -> {
                     mBinding.loaderLl.visibility = android.view.View.INVISIBLE
+                    mBinding.errorTv.visibility = android.view.View.VISIBLE
                     // Show error message
                     val errorMessage = state.message
                     // For example, you can show a Toast or a Snackbar with the error message

@@ -34,7 +34,8 @@ class ApiCallViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             _screenState.postValue(ApiCallState.Loading)
             try {
-                val response = repository.getComputerListRetrofit()
+                val response = repository.getComputerListRetrofit() // Recommended way to make network request using Retrofit
+                //val response = repository.getComputerListOkHttp()
 
                 Log.d(TAG, "Response from repository: $response")
                 val computerList: ResponseData = response
