@@ -39,7 +39,6 @@ class ApiCallViewModel : ViewModel() {
 
                 Log.d(TAG, "Response from repository: $response")
                 val computerList: ResponseData = response
-                delay(3000)
                 _screenState.postValue(ApiCallState.Success(computerList))
 
             } catch (e: Exception) {

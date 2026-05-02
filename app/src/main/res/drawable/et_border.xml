@@ -7,8 +7,8 @@
     <!-- Define the border (outline) using the stroke tag -->
     <stroke
         android:width="2dp"
-        android:color="#0E19B3"/>
+        android:color="@color/yellow"/>
 
     <!-- Optional: add rounded corners -->
-    <corners android:radius="8dp"/>
+    <corners android:radius="16dp"/>
 </shape>

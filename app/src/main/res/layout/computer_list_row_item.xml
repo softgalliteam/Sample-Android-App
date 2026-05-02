@@ -7,7 +7,7 @@
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
-    android:background="@drawable/et_border"
+    android:background="@drawable/shape_circle"
     android:padding="6dp">
 
     <ImageView
@@ -24,9 +24,9 @@
         android:id="@+id/compTitleTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="8dp"
         android:text="Title Goes Here"
-        android:textColor="@color/yellow"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         android:singleLine="true"
